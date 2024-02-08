@@ -1,7 +1,9 @@
 package com.project.israel.certification.modules.students.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +12,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity(name ="answers_certification_students" )
 public class AnswersCertificationEntity {
     @Id
@@ -21,6 +24,7 @@ public class AnswersCertificationEntity {
 
     @ManyToOne
     @JoinColumn(name = "certification_id", insertable = false, updatable = false)
+    @JsonBackReference
     private CertificationStudentEntity certificationStudentEntity;
 
     @Column(name = "student_id")
